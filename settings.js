@@ -51,8 +51,8 @@ global.etiqueta = '𝖿ᥱძᥱᥣᥲᥒᥡ𝗍'
 global.moneda = '¥enes'
 global.welcom1 = '❍ Edita Con El Comando setwelcome'
 global.welcom2 = '❍ Edita Con El Comando setbye'
-global.banner = 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1742678744381.jpeg'
-global.avatar = 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1742678797993.jpeg'
+global.banner = 'https://qu.ax/FLKXQ.jpg'
+global.avatar = 'https://qu.ax/FLKXQ.jpg'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
