@@ -20,7 +20,9 @@ ${namecomu}
 > ${dev}`
 
 await m.react(emojis)
-
+  
+<img src= "https://files.catbox.moe/iigsua.jpg">
+    </p>
 }
 handler.help = ['grupos']
 handler.tags = ['info']
