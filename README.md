@@ -1,7 +1,21 @@
-<h1 align="center">✦ Yυƙι-Sυσυ-Bσƚ ✦</h1>
+<h1 align="center">ASUNA BOT Al</h1>
 
- <img src= "https://files.catbox.moe/om9jai.jpg">
+ <img src= "https://files.catbox.moe/iigsua.jpg">
     </p>
+
+----
+
+</details>
+
+<div align="center">
+  <img src="https://profile-counter.glitch.me/FedelanYTCLUB/count.svg" />
+  <p>👁️ Visitantes del Repositorio 👁️</p>
+</div>
+
+</details>
+
+   
+----
 
 ### **`❕️ Información importante`**
 
@@ -35,6 +49,7 @@
 
 ---
 
+
 ### **`✧ Click en la imagen para descargar termux ✧`**
 <a
 href="https://www.mediafire.com/file/llugt4zgj7g3n3u/com.termux_1020.apk/file"><img src="https://qu.ax/finc.jpg" height="125px"></a> 
@@ -55,7 +70,7 @@ apt update && apt upgrade && pkg install -y git nodejs ffmpeg imagemagick yarn
 ```
 
 ```bash
-git clone https://github.com/The-King-Destroy/Yuki_Suou-Bot && cd Yuki_Suou-Bot
+git clone https://github.com/fedelanYTCLUB/asuna_Bot-Al && cd asuna_Bot-Al
 ```
 
 ```bash
@@ -83,7 +98,7 @@ npm start
 ❒ Abre Termux y navega al directorio del bot:
    
    ```bash
-    cd Yuki_Suou-Bot
+    cd asuna_Bot-Al
    ```
 
 ❒ Inicia el bot nuevamente:
@@ -97,7 +112,7 @@ npm start
 > Si después de instalar el bot en Termux y iniciar la session del bot (deseas poner tu número es la lista de owner pon este comando:
 
    ```bash
-    cd Yuki_Suou-Bot && nano settings.js
+    cd asuna_Bot-Al && nano settings.js
    ```
 
 </details>
@@ -108,70 +123,35 @@ npm start
 <details>
  <summary><b> 🜸 Enlaces Oficiales </b></summary>
 
- * Canal Oficial  [`¡Click aquí!`](https://whatsapp.com/channel/0029VbAfPu9BqbrEMFWXKE0d)
-* Grupo Oficial [`¡Click aquí!`](https://chat.whatsapp.com/CDw7hpI30WjCyKFAVLHNhZ)
-* Comunidad Oficial [`¡Click aquí!`](https://chat.whatsapp.com/I0dMp2fEle7L6RaWBmwlAa)
+ * Canal Oficial  [`¡Click aquí!`](https://whatsapp.com/channel/0029VbAfd7zDDmFXm5adcF31)
+* Comunidad Oficial [`¡Click aquí!`](https://chat.whatsapp.com/GgPP07cL54iL6C1lrwX0fz)
 </details>
 
-<details>
-<summary><b> ✰ Contáctos</b></summary>
+### **👑 INFORMACION CONTACTOS**
 
-* WhatsApp: [`Aquí`](https:/Wa.me/5212202410659)
-* Correo: [`Aquí`](thekingdestroy507@gmail.com)
+#### **Owner: Fede🍭**
+> **Developed By: ASUNA-BOT**
 
-</details>
-
----
-
-### **`✧ SKY-ULTRA-PLUS ✧`**
+#### **`CONTACTOS 💻`**
+<p>
 
 <a
-href="https://dash.skyultraplus.com/home"><img src="https://qu.ax/zFzXF.png" height="125px"></a>
+href="https://wa.me/5491156178758?text="><img src="https://files.catbox.moe/1im3vh.jpg" height="125px"></a>
 
 <details>
- <summary><b> ❒ Servidor Sky-Ultra-Plus</b></summary>
+<summary><b> 📞 Toca Aqui</b></summary>
 
-* Dashboard : [`Dash`](https://dash.skyultraplus.com)
-* Panel : [`Panel`](https://panel.skyultraplus.com)
-* Canal de WhatsApp : [`Canal Sky`](https://whatsapp.com/channel/0029VakUvreFHWpyWUr4Jr0g)
-* Comunidad : [`Aquí`](https://chat.whatsapp.com/JPwcXvPEUwlEOyjI3BpYys)
-* Contacto : [`Gata Dios`](https://wa.me/message/B3KTM5XN2JMRD1)
+- **Propietario:** [`Aquí`](https:/Wa.me/5491156178758)
+- **Github:** [`Aqui`](https://github.com/fedelanYTCLUB)
+- **Correo:** [`Aqui`](fedelanyt20@gmail.com)
 
 </details>
 
----
+<!-- RAINBOW LINE BOT -->
+<img src="https://github.com/AnderMendoza/AnderMendoza/raw/main/assets/line-neon.gif" width="100%">
 
-### **`✦ AKIRAX ✦`**
 
+### **`🍭 Propietario`**
 <a
-href="https://home.akirax.net"><img src="https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1748713078525.jpeg" height="125px"></a>
-
-<details>
- <summary><b> ❒ Servidor Akirax</b></summary>
-
-* Dashboard : [`Dash`](https://home.akirax.net)
-* Panel : [`Panel`](https://console.akirax.net)
-* Canal de WhatsApp : [`Aqui`](https://whatsapp.com/channel/0029VbBCchVDJ6H6prNYfz2z)
-* Grupo Oficial : [`Aquí`](https://chat.whatsapp.com/JxSZTFJN9J20TnsH7KsKTA)
-
-</details>
-
----
-
-### **`❀ Colaboradores`**
-<a href="https://github.com/The-King-Destroy/Yuki_Suou-Bot/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=The-King-Destroy/Yuki_Suou-Bot" /> 
-</a>
-
-### **`ᥫ᭡ Propietario`**
-<a
-href="https://github.com/The-King-Destroy"><img src="https://github.com/The-King-Destroy.png" width="130" height="130" alt="
-ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜"/></a>
-
-### **`🜸 Créditos`**
-<a href="https://github.com/DevAlexJs" style="display:inline-block; text-decoration: none;">
-    <img src="https://github.com/DevAlexJs.png" width="130" height="130" alt="Alex-X" style="border-radius: 50%;"/>
-</a>
-<a href="https://github.com/BrunoSobrino" style="display:inline-block; margin-right: 10px; text-decoration: none;">
-    <img src="https://github.com/BrunoSobrino.png" width="130" height="130" alt="Bruno Ofc" style="border-radius: 50%;"/>
-</a>
+href="https://github.com/fedelanyt130"><img src="https://github.com/fedelanyt130.png" width="130" height="130" alt="
+FedelanYT"/></a>
