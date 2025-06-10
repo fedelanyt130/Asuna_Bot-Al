@@ -1,4 +1,4 @@
-<h1 align="center">ASUNA BOT Al</h1>
+<h1 align="center">ᥲsᥙᥒᥲ_ᑲ᥆𝗍-ᥲᥣ</h1>
 
  <img src= "https://files.catbox.moe/iigsua.jpg">
     </p>
