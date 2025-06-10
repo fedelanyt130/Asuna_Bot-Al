@@ -8,7 +8,7 @@
 </details>
 
 <div align="center">
-  <img src="https://profile-counter.glitch.me/FedelanYTCLUB/count.svg" />
+  <img src="https://profile-counter.glitch.me/fedelanyt130/count.svg" />
   <p>👁️ Visitantes del Repositorio 👁️</p>
 </div>
 
@@ -142,7 +142,7 @@ href="https://wa.me/5491156178758?text="><img src="https://files.catbox.moe/1im3
 <summary><b> 📞 Toca Aqui</b></summary>
 
 - **Propietario:** [`Aquí`](https:/Wa.me/5491156178758)
-- **Github:** [`Aqui`](https://github.com/fedelanYTCLUB)
+- **Github:** [`Aqui`](https://github.com/fedelanyt130)
 - **Correo:** [`Aqui`](fedelanyt20@gmail.com)
 
 </details>
