@@ -17,15 +17,14 @@ let handler = async (m, { conn, args }) => {
   let txt = `
   *🍭.......⋆｡˚☁︎｡⋆｡ 🍀 ⋆｡˚☁︎｡⋆........🍭*
 > *Hola,* ${saludo} *Me llamo* ${botname}
-
-
-👤 *Usuario:* @${userId.split('@')[0]}
-🪷 *Modo:* Privado
-🕒 *Activa hace:* ${uptime}
-👥 *Usuarios:* *${totalreg}*
-🤍 *Comandos:* ${totalCommands}
-🍫 *Baileys:* MekBaileys
-
+╭╼╼╼╼╼╼╼
+├ׁ̟̇❍👤 *Usuario:* @${userId.split('@')[0]}
+├ׁ̟̇❍🪷 *Modo:* Privado
+├ׁ̟̇❍🕒 *Activa hace:* ${uptime}
+├ׁ̟̇❍👥 *Usuarios:* *${totalreg}*
+├ׁ̟̇❍🤍 *Comandos:* ${totalCommands}
+├ׁ̟̇❍🍫 *Baileys:* MekBaileys
+▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬▭▬▭▬▭▬▭╝
 > ･::ﾟ･ﾟ☆ 𝐈𝐧𝐟𝐨 𝐁𝐨𝐭 ☆･ﾟ:･ﾟ::･> 
 
 *꒰ 👑 ꒱* #help • #menu
