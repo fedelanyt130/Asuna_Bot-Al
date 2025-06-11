@@ -30,7 +30,6 @@ let handler = async (m, { conn, args }) => {
 > ･::ﾟ･ﾟ☆ 𝐈𝐧𝐟𝐨 𝐁𝐨𝐭 ☆･ﾟ:･ﾟ::･> 
 
 *꒰ 👑 ꒱* #help • #menu
-*꒰ 👑 ꒱* #menu18 #menunsfw
 *꒰ 👑 ꒱* #uptime • #runtime
 *꒰ 👑 ꒱* #serbot • #serbot code
 *꒰ 👑 ꒱* #bots • #sockets
