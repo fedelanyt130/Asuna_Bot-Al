@@ -36,8 +36,8 @@ global.namecomu = '✦ ᥲsᥙᥒᥲᑲ᥆𝗍-ᥲᥣ ᥴһᥲᥒᥒᥱᥣ ❀'
 global.listo = '❀ *Aquí tienes ฅ^•ﻌ•^ฅ*'
 global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://raw.githubusercontent.com/The-King-Destroy/Adiciones/main/Contenido/1745522645448.jpeg')
 
-global.canalIdM = ["120363420017244077@newsletter", "120363420017244077@newsletter"]
-global.canalNombreM = ["✦ ᥲsᥙᥒᥲᑲ᥆𝗍-ᥲᥣ ᥴһᥲᥒᥒᥱᥣ ❀", "✦ ᥲsᥙᥒᥲᑲ᥆𝗍-ᥲᥣ ᥴһᥲᥒᥒᥱᥣ ❀"]
+global.canalIdM = ["120363420017244077@newsletter", "120363402097425674@newsletter"]
+global.canalNombreM = ["✦ ᥲsᥙᥒᥲᑲ᥆𝗍-ᥲᥣ ᥴһᥲᥒᥒᥱᥣ ❀", "❀ ᥲ𝗌ᥙᥒᥲ-ᑲ᥆𝗍  rᥱgіs𝗍r᥆s ✧"]
 global.channelRD = await getRandomChannel()
 
 global.d = new Date(new Date + 3600000)
