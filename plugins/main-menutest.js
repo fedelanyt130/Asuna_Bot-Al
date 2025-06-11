@@ -18,7 +18,6 @@ let handler = async (m, { conn, args }) => {
   *🍭.......⋆｡˚☁︎｡⋆｡ 🍀 ⋆｡˚☁︎｡⋆........🍭*
 > *Hola,* ${saludo} *Me llamo* ${botname}
 
-> *🍭 EL BOT SE ENCUENTRA EN DESARROLLO XD*
 
 👤 *Usuario:* @${userId.split('@')[0]}
 🪷 *Modo:* Privado
@@ -49,7 +48,7 @@ let handler = async (m, { conn, args }) => {
 *꒰ 👑 ꒱* #editautoresponder
 
 
-> ･::::･ﾟ☆ 𝐁𝐮𝐬𝐜𝐚𝐝𝐨𝐫𝐞𝐬 ☆･ﾟ★･ﾟ::･> 
+> *･::::･ﾟ☆ 𝐁𝐮𝐬𝐜𝐚𝐝𝐨𝐫𝐞𝐬 ☆･ﾟ★･ﾟ::･*
 
 *꒰ 🔍 ꒱* #wallpapersearch + [ búsqueda ]
 *꒰ 🔍 ꒱* #tiktoksearch • #tiktoks
