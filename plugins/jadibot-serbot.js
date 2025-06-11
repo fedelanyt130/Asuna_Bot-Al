@@ -30,8 +30,35 @@ let crm3 = "SBpbmZvLWRvbmFyLmpz"
 let crm4 = "IF9hdXRvcmVzcG9uZGVyLmpzIGluZm8tYm90Lmpz"
 let drm1 = ""
 let drm2 = ""
-let rtx = "*⪛✰ ↫ ᥲsᥙᥒᥲ - ᑲ᥆𝗍 - ᥲᥣ ↬ ✰⪜*\n\n✐ Cσɳҽxισɳ SυႦ-Bσƚ Mσԃҽ QR\n\n✰ Con otro celular o en la PC escanea este QR para convertirte en un *Sub-Bot* Temporal.\n\n\`1\` » Haga clic en los tres puntos en la esquina superior derecha\n\n\`2\` » Toque dispositivos vinculados\n\n\`3\` » Escanee este codigo QR para iniciar sesion con el bot\n\n✧ ¡Este código QR expira en 45 segundos!."
-let rtx2 = "*⪛✰ ↫ ᥲsᥙᥒᥲ - ᑲ᥆𝗍 - ᥲᥣ ↬ ✰⪜*\n\n✐ Cσɳҽxισɳ SυႦ-Bσƚ Mσԃҽ Cσԃҽ\n\n✰ Usa este Código para convertirte en un *Sub-Bot* Temporal.\n\n\`1\` » Haga clic en los tres puntos en la esquina superior derecha\n\n\`2\` » Toque dispositivos vinculados\n\n\`3\` » Selecciona Vincular con el número de teléfono\n\n\`4\` » Escriba el Código para iniciar sesion con el bot\n\n✧ No es recomendable usar tu cuenta principal."
+let rtx = `╭˚₊‧୨ *⟡ asuna - Bot ⟡* ୧‧₊˚╮
+
+꒰ 💙 *Modo Sub-Bot (QR)* 💙 ꒱
+
+¡Escanea este QR desde otro celular o PC  
+para convertirte en un 𖦹 *Sub-Bot Temporal* 𖦹!
+
+➀ ˚୨ Toca los ⋮ en la esquina superior derecha  
+➁ ˚୨ Entra en ✧ *Dispositivos vinculados*  
+➂ ˚୨ Escanea el código QR para iniciar sesión
+
+୨୧ Este código expira en *45 segundos* ⏱️
+
+╰────────♡─────────╯`;
+let rtx2 = `╭˚₊‧୨ *⟡ asuna - Bot ⟡* ୧‧₊˚╮
+
+꒰ 💌 *Modo Sub-Bot (Código)* 💌 ꒱
+
+¡Usa este ૮₍｡•́︿•̀｡₎ა *Código especial*  
+para conectarte como un *Sub-Bot Temporal*!
+
+➀ ˚୨ Toca los ⋮ en la esquina superior derecha  
+➁ ˚୨ Entra en ✧ *Dispositivos vinculados*  
+➂ ˚୨ Elige *Vincular con número de teléfono*  
+➃ ˚୨ Escribe el código que te damos
+
+୨୧ ⭒ *No uses tu cuenta principal, por seguridad*
+
+╰────────♡─────────╯`;
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -41,11 +68,11 @@ else global.conns = []
 let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
 //if (!globalThis.db.data.settings[conn.user.jid].jadibotmd) return m.reply(`♡ Comando desactivado temporalmente.`)
 let time = global.db.data.users[m.sender].Subs + 120000
-if (new Date - global.db.data.users[m.sender].Subs < 120000) return conn.reply(m.chat, `${emoji} Debes esperar ${msToTime(time - new Date())} para volver a vincular un *Sub-Bot.*`, m)
+if (new Date - global.db.data.users[m.sender].Subs < 120000) return conn.reply(m.chat, `${emoji} Espera ${msToTime(time - new Date())} para volver a intentar vincular un *Sub-Bot.*`, m)
 const subBots = [...new Set([...global.conns.filter((conn) => conn.user && conn.ws.socket && conn.ws.socket.readyState !== ws.CLOSED).map((conn) => conn)])]
 const subBotsCount = subBots.length
-if (subBotsCount === 20) {
-return m.reply(`${emoji2} No se han encontrado espacios para *Sub-Bots* disponibles.`)
+if (subBotsCount === 41) {
+return m.reply(`${emoji2} Lo siento, no se han encontrado espacios para *Sub-Bots* disponibles, verifica más tarde.`)
 }
 /*if (Object.values(global.conns).length === 30) {
 return m.reply(`${emoji2} No se han encontrado espacios para *Sub-Bots* disponibles.`)
@@ -108,7 +135,7 @@ printQRInTerminal: false,
 auth: { creds: state.creds, keys: makeCacheableSignalKeyStore(state.keys, pino({level: 'silent'})) },
 msgRetry,
 msgRetryCache,
-browser: mcode ? ['Ubuntu', 'Chrome', '110.0.5585.95'] : ['Yuki-Suou (Sub Bot)', 'Chrome','2.0.0'],
+browser: mcode ? ['Ubuntu', 'Chrome', '110.0.5585.95'] : ['Anya [Sub Bot]', 'Chrome','2.0.0'],
 version: version,
 generateHighQualityLinkPreview: true
 };
