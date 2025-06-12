@@ -54,10 +54,11 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     regbot += `• 5 AsunaCoins 🪙\n> `
     regbot += `• 245 Experiencia 💸\n> `
     regbot += `• 12 Tokens 💰\n`
-    regbot += https://whatsapp.com/channel/0029VbApe6jG8l5Nv43dsC2N/n>
     regbot += `*⸽ ͜ ֟፝͝ ⃨͜ ⸽ ͜ ֟፝͝ ⃨͜ ⸽᮫᷼  ͜ ໍ ᷼ᮬ࣪  ׅ 🩵ຼິ͙͙〫 ׅ  ࣪᷼  ͜  ᷼ᮬ᮫ ໍ⸽ ͜ ֟፝͝ ⃨͜ ⸽ ͜ ֟፝͝ ⃨͜ ⸽*\n> `
     regbot += `🍫 Usᥲ *#perfil* ⍴ᥲrᥲ ᥎ᥱr 𝗍ᥙ ⍴ᥱr𝖿іᥣ.`
 
+let channelID = '120363402097425674@newsletter';
+        await conn.sendMessage(channelID, {
   await conn.sendMessage(m.chat, {
         text: regbot,
         contextInfo: {
