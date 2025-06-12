@@ -69,15 +69,13 @@ export async function before(m, { conn, participants, groupMetadata }) {
   if (chat.welcome) {
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
       let bienvenida = `
-   ╭─ׅ─ׅ┈─๋︩︪──ׅ─ׅ┈─๋︩︪╮
-╭╼  *`WELCOME`*
-┃֪࣪ ╰─ׅ─ׅ┈─๋︩︪──ׅ─ׅ┈─๋︩︪╯
-├ Usuario:* ${taguser}
-├ País:* ${pais}
-├ Grupo:* *${groupMetadata.subject}*
-├ Miembros:* *${totalMembers + 1}*
-├ Fecha:* *${date}*
-╚╼╼╼╼╼╼╼╼╼╼╼╝
+*╭━━〔 *Bienvenido/a* 〕━━⬣*
+*┃ Usuario:* ${taguser}
+*┃ País:* ${pais}
+*┃ Grupo:* *${groupMetadata.subject}*
+*┃ Miembros:* *${totalMembers + 1}*
+*┃ Fecha:* *${date}*
+*╰━▣*
 *${fraseRandomBienvenida}*
       `.trim();
 
@@ -93,15 +91,13 @@ export async function before(m, { conn, participants, groupMetadata }) {
       m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE
     ) {
       let despedida = `
-   ╭─ׅ─ׅ┈─๋︩︪──ׅ─ׅ┈─๋︩︪╮
-╭╼  *`GOODBYE`*
-┃֪࣪ ╰─ׅ─ׅ┈─๋︩︪──ׅ─ׅ┈─๋︩︪╯
-├ Usuario:* ${taguser}
-├ País:* ${pais}
-├ Grupo:* *${groupMetadata.subject}*
-├ Miembros:* *${totalMembers - 1}*
-├ Fecha:* *${date}*
-╚╼╼╼╼╼╼╼╼╼╼╼╝
+*╭──〔 *Despedida* 〕──⬣*
+*┃ Usuario:* ${taguser}
+*┃ País:* ${pais}
+*┃ Grupo:* *${groupMetadata.subject}*
+*┃ Miembros:* *${totalMembers - 1}*
+*┃ Fecha:* *${date}*
+*╰━▣*
 *${fraseRandomDespedida}*
       `.trim();
 
