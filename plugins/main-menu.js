@@ -37,7 +37,7 @@ const defaultMenu = {
 ├ 💫 *Usuarios:* %totalreg 
 ╚━━━━━━━━━━━━
 %readmore
-*✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧*\n\n> Para Ser Un Sub Bots Usa #code para codigo de 8 dígitos y #qr para codigo qr.
+> sі 𝗊ᥙіᥱrᥱs sᥱr sᥙᑲ-ᑲ᥆𝗍 ᥙsᥲ *#ᥴ᥆ძᥱ* ᥆ ᥙsᥲ *#𝗊r*
 
 \t*(🩵◠‿◠) COMANDOS ASUNA*   
 `.trimStart(),
