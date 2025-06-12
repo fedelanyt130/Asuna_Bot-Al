@@ -1,418 +1,228 @@
-let handler = async (m, { conn, args }) => {
-  let userId = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.sender;
-  let user = global.db.data.users[userId];
-  let name = conn.getName(userId);
-  let _uptime = process.uptime() * 1000;
-  let uptime = clockString(_uptime);
-  let totalreg = Object.keys(global.db.data.users).length;
-  let totalCommands = Object.values(global.plugins).filter((v) => v.help && v.tags).length;
+import { promises } from 'fs'
+import { join } from 'path'
+import fetch from 'node-fetch'
+import { xpRange } from '../lib/levelling.js'
 
-  const botname = global.botname || "NombreDelBot";
-  const textbot = global.textbot || "Descripción del bot";
-  const banner = global.banner || "URL de la imagen del banner";
-  const redes = global.redes || "URL de las redes sociales";
-  const channelRD = global.channelRD || { id: 'id_del_canal', name: 'Nombre del canal' };
-  const moneda = global.moneda || 'monedas';
+let tags = {
+  'main': '「INFO」🍨',
+  'buscador': '「BUSQUEDAS」🍨',
+  'fun': '「JUEGOS」🍨',
+  'serbot': '「SUB BOTS」🍨',
+  'rpg': '「RPG」🍨',
+  'rg': '「REGISTRO」🍨',
+  'sticker': '「STICKERS」🍨',
+  'emox': '「ANIMES」🍨',
+  'database': '「DATABASE」🍨',
+  'grupo': '「GRUPOS」🍨',
+  'nable': '「ON / OFF」', 
+  'descargas': '「DESCARGAS」🍨',
+  'tools': '「HERRAMIENTAS」🍨',
+  'info': '「INFORMACIÓN」🍨',
+  'owner': '「CREADOR」🍨',
+  'logos': '「EDICION LOGOS」🍨', 
+}
 
-  let txt = `
-  *🍭.......⋆｡˚☁︎｡⋆｡ 🍀 ⋆｡˚☁︎｡⋆........🍭*
-> *Hola,* ${saludo} *Me llamo* ${botname}
+const vid = 'https://cdnmega.vercel.app/media/dwx0CKRD@MmwtDrN7W6x4EIFtt4ss50UJpk-F2fFXJBueIW1IZR8';
 
-╭╼╼╼╼╼╼╼𔓕
-├ׁ̟̇❍✎ 👤 *Usuario:* @${userId.split('@')[0]}
-├ׁ̟̇❍✎ 🪷 *Modo:* Privado
-├ׁ̟̇❍✎ 🕒 *Activa hace:* ${uptime}
-├ׁ̟̇❍✎ 👥 *Usuarios:* *${totalreg}*
-├ׁ̟̇❍✎ 🤍 *Comandos:* ${totalCommands}
-├ׁ̟̇❍✎ 🍫 *Baileys:* MekBaileys
-╚▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬ִ▭࣪▬▭╝
+const defaultMenu = {
+  before: `*🍭.......⋆｡˚☁︎｡⋆｡ 🍀 ⋆｡˚☁︎｡⋆........🍭*
 
-> ･::ﾟ･ﾟ☆ 𝐈𝐧𝐟𝐨 𝐁𝐨𝐭 ☆･ﾟ:･ﾟ::･> 
+"「💛」 ¡Hola! *%name* %greeting, Para Ver Tu Perfil Usa *#perfil* ❒"
 
-*꒰ 👑 ꒱* #help • #menu
-*꒰ 👑 ꒱* #uptime • #runtime
-*꒰ 👑 ꒱* #serbot • #serbot code
-*꒰ 👑 ꒱* #bots • #sockets
-*꒰ 👑 ꒱* #creador • #owner
-*꒰ 👑 ꒱* #status • #estado
-*꒰ 👑 ꒱* #links • #grupos
-*꒰ 👑 ꒱* #infobot • #infobot
-*꒰ 👑 ꒱* #sug • #newcommand
-*꒰ 👑 ꒱* #p • #ping
-*꒰ 👑 ꒱* #reporte • #reportar
-*꒰ 👑 ꒱* #sistema • #system
-*꒰ 👑 ꒱* #speed • #speedtest
-*꒰ 👑 ꒱* #views • #usuarios
-*꒰ 👑 ꒱* #funciones • #totalfunciones
-*꒰ 👑 ꒱* #ds • #fixmsgespera
-*꒰ 👑 ꒱* #editautoresponder
+╔━━━━━ *⊱𝐈𝐍𝐅𝐎 - 𝐁𝐎𝐓⊰*
+✦  👤 *Cliente:* %name
+✦  🔱 *Modo:* Público
+✧  ✨ *Baileys:* Multi Device
+✦  🪐 *Tiempo Activo:* %muptime
+✧  💫 *Usuarios:* %totalreg 
+╚━━━━━━━━━━━━━━
+%readmore
+*✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧*\n\n> Para Ser Un Sub Bots Usa #code para codigo de 8 dígitos y #qr para codigo qr.
 
+\t*(✰◠‿◠) 𝐂 𝐨 𝐦 𝐚 𝐧 𝐝 𝐨 𝐬*   
+`.trimStart(),
+  header: '͜ ۬︵࣪᷼⏜݊᷼⏜🩵⏜࣪᷼⏜࣪᷼︵۬ ͜\n┊➳ %category \n͜ ۬︵࣪᷼⏜݊᷼⏜🩵⏜࣪᷼⏜࣪᷼︵۬ ͜',
+  body: '*┃⏤͟͟͞͞🩵ᮢ⃘ᩙ * %cmd',
+  footer: '*┗━*\n',
+  after: `> ${dev}`,
+}
+let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
+  try {
+    let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
+    let { exp, estrellas, level, role } = global.db.data.users[m.sender]
+    let { min, xp, max } = xpRange(level, global.multiplier)
+    let name = await conn.getName(m.sender)
+    exp = exp || 'Desconocida';
+    role = role || 'Aldeano';
+    let d = new Date(new Date + 3600000)
+    let locale = 'es'
+    let weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(d / 84600000) % 5]
+    let week = d.toLocaleDateString(locale, { weekday: 'long' })
+    let date = d.toLocaleDateString(locale, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    })
+    let dateIslamic = Intl.DateTimeFormat(locale + '-TN-u-ca-islamic', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(d)
+let botinfo = (conn.user.jid == global.conn.user.jid ? 'Oficial' : 'Sub-Bot');
 
-> *･::::･ﾟ☆ 𝐁𝐮𝐬𝐜𝐚𝐝𝐨𝐫𝐞𝐬 ☆･ﾟ★･ﾟ::･*
+    let time = d.toLocaleTimeString(locale, {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    })
+    let _uptime = process.uptime() * 1000
+    let _muptime
+    if (process.send) {
+      process.send('uptime')
+      _muptime = await new Promise(resolve => {
+        process.once('message', resolve)
+        setTimeout(resolve, 1000)
+      }) * 1000
+    }
+    let muptime = clockString(_muptime)
+    let uptime = clockString(_uptime)
+    let totalreg = Object.keys(global.db.data.users).length
+    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
+    let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
+      return {
+        help: Array.isArray(plugin.tags) ? plugin.help : [plugin.help],
+        tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags],
+        prefix: 'customPrefix' in plugin,
+        estrellas: plugin.estrellas,
+        premium: plugin.premium,
+        enabled: !plugin.disabled,
+      }
+    })
+    for (let plugin of help)
+      if (plugin && 'tags' in plugin)
+        for (let tag of plugin.tags)
+          if (!(tag in tags) && tag) tags[tag] = tag
+    conn.menu = conn.menu ? conn.menu : {}
+    let before = conn.menu.before || defaultMenu.before
+    let header = conn.menu.header || defaultMenu.header
+    let body = conn.menu.body || defaultMenu.body
+    let footer = conn.menu.footer || defaultMenu.footer
+    let after = conn.menu.after || (conn.user.jid == conn.user.jid ? '' : `Powered by https://wa.me/${conn.user.jid.split`@`[0]}`) + defaultMenu.after
+    let _text = [
+      before,
+      ...Object.keys(tags).map(tag => {
+        return header.replace(/%category/g, tags[tag]) + '\n' + [
+          ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
+            return menu.help.map(help => {
+              return body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
+                .replace(/%isdiamond/g, menu.diamond ? '(ⓓ)' : '')
+                .replace(/%isPremium/g, menu.premium ? '(Ⓟ)' : '')
+                .trim()
+            }).join('\n')
+          }),
+          footer
+        ].join('\n')
+      }),
+      after
+    ].join('\n')
+    let text = typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
+let replace = {
+'%': '%',
+p: _p, uptime, muptime,
+me: conn.getName(conn.user.jid),
+taguser: '@' + m.sender.split("@s.whatsapp.net")[0],
+npmname: _package.name,
+npmdesc: _package.description,
+version: _package.version,
+exp: exp - min,
+maxexp: xp,
+botofc: (conn.user.jid == global.conn.user.jid ? '💛 𝙴𝚂𝚃𝙴 𝙴𝚂 𝙴𝙻 𝙱𝙾𝚃 𝙾𝙵𝙲' : `💛 𝚂𝚄𝙱-𝙱𝙾𝚃 𝙳𝙴: Wa.me/${global.conn.user.jid.split`@`[0]}`), 
+totalexp: exp,
+xp4levelup: max - exp,
+github: _package.homepage ? _package.homepage.url || _package.homepage : '[unknown github url]',
+greeting, level, estrellas, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
+readmore: readMore
+}
+text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
 
-*꒰ 🔍 ꒱* #wallpapersearch + [ búsqueda ]
-*꒰ 🔍 ꒱* #tiktoksearch • #tiktoks
-*꒰ 🔍 ꒱* #tweetposts
-*꒰ 🔍 ꒱* #ytsearch • #yts
-*꒰ 🔍 ꒱* #githubsearch
-*꒰ 🔍 ꒱* #cuevana • #cuevanasearch
-*꒰ 🔍 ꒱* #google
-*꒰ 🔍 ꒱* #pin • #pinterest
-*꒰ 🔍 ꒱* #imagen • #image
-*꒰ 🔍 ꒱* #infoanime
-*꒰ 🔍 ꒱* #hentaisearch • #searchhentai
-*꒰ 🔍 ꒱* #xnxxsearch • #xnxxs
-*꒰ 🔍 ꒱* #xvsearch • #xvideossearch
-*꒰ 🔍 ꒱* #pornhubsearch • #phsearch
-*꒰ 🔍 ꒱* #npmjs
+await m.react(emojis) 
 
-> ･::･ﾟ☆ 𝐃𝐞𝐬𝐜𝐚𝐫𝐠𝐚𝐬 ☆･ﾟ:,★ﾟ::･> 
+/* await conn.sendMessage(m.chat, { video: { url: vid }, caption: text.trim(), contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.name, serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: textbot, body: dev, thumbnailUrl: 'https://qu.ax/kJBTp.jpg', sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false,
+}, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null }) */
 
-*꒰ 📥 ꒱* #ttstalk • #tiktokstalk + [username]
-*꒰ 📥 ꒱* #tiktok • #tt
-*꒰ 📥 ꒱* #mediafire • #mf
-*꒰ 📥 ꒱* #pinvid • #pinvideo + [enlacé]
-*꒰ 📥 ꒱* #mega • #mg + [enlacé]
-*꒰ 📥 ꒱* #play • #play2
-*꒰ 📥 ꒱* #ytmp3 • #ytmp4
-*꒰ 📥 ꒱* #fb • #facebook
-*꒰ 📥 ꒱* #twitter • #x + [Link]
-*꒰ 📥 ꒱* #ig • #instagram
-*꒰ 📥 ꒱* #tts • #tiktoks + [busqueda]
-*꒰ 📥 ꒱* #terabox • #tb + [enlace]
-*꒰ 📥 ꒱* #ttimg • #ttmp3 + <url
-*꒰ 📥 ꒱* #gitclone + <url
-*꒰ 📥 ꒱* #xvideosdl
-*꒰ 📥 ꒱* #xnxxdl
-*꒰ 📥 ꒱* #apk • #modapk
-*꒰ 📥 ꒱* #tiktokrandom • #ttrandom
-*꒰ 📥 ꒱* #npmdl • #npmdownloader
+let img = 'https://files.catbox.moe/70lyk8.jpg'; // valiendo vrg con los links
 
-> ･:,:ﾟ☆ 𝐄𝐜𝐨𝐧𝐨𝐦𝐢́𝐚 ☆･ﾟ:::･> 
-
-*꒰ 💰 ꒱* #w • #work • #trabajar ${moneda}
-*꒰ 💰 ꒱* #slut • #protituirse ${moneda}
-*꒰ 💰 ꒱* #cf • #suerte ${moneda}
-*꒰ 💰 ꒱* #crime • #crimen ${moneda}
-*꒰ 💰 ꒱* #ruleta • #roulette • #rt ${moneda}
-*꒰ 💰 ꒱* #casino • #apostar ${moneda}
-*꒰ 💰 ꒱* #slot ${moneda}
-*꒰ 💰 ꒱* #cartera • #wallet ${moneda}
-*꒰ 💰 ꒱* #banco • #bank ${moneda}
-*꒰ 💰 ꒱* #deposit • #depositar • #d ${moneda}
-*꒰ 💰 ꒱* #with • #retirar • #withdraw ${moneda}
-*꒰ 💰 ꒱* #transfer • #pay ${moneda}
-*꒰ 💰 ꒱* #miming • #minar • #mine
-*꒰ 💰 ꒱* #buyall • #buy ${moneda}
-*꒰ 💰 ꒱* #daily • #diario
-*꒰ 💰 ꒱* #cofre
-*꒰ 💰 ꒱* #weekly • #semanal
-*꒰ 💰 ꒱* #monthly • #mensual
-*꒰ 💰 ꒱* #steal • #robar • #rob ${moneda}.
-*꒰ 💰 ꒱* #robarxp • #robxp
-*꒰ 💰 ꒱* #eboard • #baltop ${moneda}
-*꒰ 💰 ꒱* #aventura • #adventure
-*꒰ 💰 ꒱* #curar • #heal
-*꒰ 💰 ꒱* #cazar • #hunt • #berburu
-*꒰ 💰 ꒱* #inv • #inventario
-*꒰ 💰 ꒱* #mazmorra • #explorar ${moneda}
-*꒰ 💰 ꒱* #halloween
-*꒰ 💰 ꒱* #christmas • #navidad
-
-> ･ﾟ★,> ☆ 𝐆𝐚𝐜𝐡𝐚 ☆,★::･> 
-
-*꒰ 🎲 ꒱* #rollwaifu • #rw • #roll
-*꒰ 🎲 ꒱* #claim • #c • #reclamar
-*꒰ 🎲 ꒱* #harem • #waifus • #claims
-*꒰ 🎲 ꒱* #charimage • #waifuimage • #wimage
-*꒰ 🎲 ꒱* #charinfo • #winfo • #waifuinfo
-*꒰ 🎲 ꒱* #givechar • #givewaifu • #regalar
-*꒰ 🎲 ꒱* #vote • #votar
-*꒰ 🎲 ꒱* #waifusboard • #waifustop • #topwaifus
-
-> ･ﾟ★,･ﾟ☆ 𝐒𝐭𝐢𝐜𝐤𝐞𝐫𝐬 ☆･ﾟ･> ,★･ﾟ･> 
-
-*꒰ ✨ ꒱* #sticker • #s
-*꒰ ✨ ꒱* #setmeta
-*꒰ ✨ ꒱* #delmeta
-*꒰ ✨ ꒱* #pfp • #getpic
-*꒰ ✨ ꒱* #qc
-*꒰ ✨ ꒱* #toimg • #img
-*꒰ ✨ ꒱* #brat • #ttp • #attp
-*꒰ ✨ ꒱* #emojimix 🦋+🔥
-*꒰ ✨ ꒱* #wm
-
-> ･:★,> ･ﾟ☆ 𝐇𝐞𝐫𝐫𝐚𝐦𝐢𝐞𝐧𝐭𝐚𝐬 ☆･ﾟ:★･ﾟ･> 
-
-*꒰ 🛠️ ꒱* #calcular • #calcular • #cal
-*꒰ 🛠️ ꒱* #tiempo • #clima
-*꒰ 🛠️ ꒱* #horario
-*꒰ 🛠️ ꒱* #fake • #fakereply
-*꒰ 🛠️ ꒱* #enhance • #remini • #hd
-*꒰ 🛠️ ꒱* #letra
-*꒰ 🛠️ ꒱* #read • #readviewonce • #ver
-*꒰ 🛠️ ꒱* #whatmusic • #shazam
-*꒰ 🛠️ ꒱* #ss • #ssweb
-*꒰ 🛠️ ꒱* #length • #tamaño
-*꒰ 🛠️ ꒱* #say • #decir + [texto]
-*꒰ 🛠️ ꒱* #todoc • #toducument
-*꒰ 🛠️ ꒱* #translate • #traducir • #trad
-
-> ･:･:･ﾟ☆ 𝐏𝐞𝐫𝐟𝐢𝐥 ☆･ﾟ::::･> 
-
-*꒰ 👤 ꒱* #reg • #verificar • #register
-*꒰ 👤 ꒱* #unreg
-*꒰ 👤 ꒱* #profile
-*꒰ 👤 ꒱* #marry [mension / etiquetar]
-*꒰ 👤 ꒱* #divorce
-*꒰ 👤 ꒱* #setgenre • #setgenero
-*꒰ 👤 ꒱* #delgenre • #delgenero
-*꒰ 👤 ꒱* #setbirth • #setnacimiento
-*꒰ 👤 ꒱* #delbirth • #delnacimiento
-*꒰ 👤 ꒱* #setdescription • #setdesc
-*꒰ 👤 ꒱* #deldescription • #deldesc
-*꒰ 👤 ꒱* #lb • #lboard + <Paginá
-*꒰ 👤 ꒱* #level • #lvl + <@Mencion
-*꒰ 👤 ꒱* #comprarpremium • #premium
-*꒰ 👤 ꒱* #confesiones • #confesar
-
-> ･::･ﾟ☆ 𝐆𝐫𝐮𝐩𝐨𝐬 ☆･ﾟ::ﾟ::･> 
-Comandos de grupos para una mejor gestión de ellos.
-*꒰ 👥 ꒱* #hidetag
-» Envía un mensaje mencionando a todos los usuarios
-*꒰ 👥 ꒱* #gp • #infogrupo
-» Ver la Información del grupo.
-*꒰ 👥 ꒱* #linea • #listonline
-» Ver la lista de los usuarios en línea.
-*꒰ 👥 ꒱* #link
-» El bot envía el link del grupo.
-*꒰ 👥 ꒱* admins • admin
-» Mencionar a los admins para solicitar ayuda.
-*꒰ 👥 ꒱* #restablecer • #revoke
-» Restablecer el enlace del grupo.
-*꒰ 👥 ꒱* #grupo • #group [open / abrir]
-» Cambia ajustes del grupo para que todos los usuarios envíen mensaje.
-*꒰ 👥 ꒱* #grupo • #gruop [close / cerrar]
-» Cambia ajustes del grupo para que solo los administradores envíen mensaje.
-*꒰ 👥 ꒱* #kick [número / mension]
-» Elimina un usuario de un grupo.
-*꒰ 👥 ꒱* #add • #añadir • #agregar [número]
-» Invita a un usuario a tu grupo.
-*꒰ 👥 ꒱* #promote [mension / etiquetar]
-» El bot dará administrador al usuario mencionando.
-*꒰ 👥 ꒱* #demote [mension / etiquetar]
-» El bot quitará administrador al usuario mencionando.
-*꒰ 👥 ꒱* #gpbanner • #groupimg
-» Cambiar la imagen del grupo.
-*꒰ 👥 ꒱* #gpname • #groupname
-» Cambiar el nombre del grupo.
-*꒰ 👥 ꒱* #gpdesc • #groupdesc
-» Cambiar la descripción del grupo.
-*꒰ 👥 ꒱* #advertir • #warn • #warning
-» Darle una advertencia a un usuario.
-*꒰ 👥 ꒱* #unwarn • #delwarn
-» Quitar advertencias.
-*꒰ 👥 ꒱* #advlist • #listadv
-» Ver lista de usuarios advertidos.
-*꒰ 👥 ꒱* #bot on
-» Enciende el bot en un grupo.
-*꒰ 👥 ꒱* #bot off
-» Apaga el bot en un grupo.
-*꒰ 👥 ꒱* #mute [mension / etiquetar]
-» El bot elimina los mensajes del usuario.
-*꒰ 👥 ꒱* #unmute [mension / etiquetar]
-» El bot deja de eliminar los mensajes del usuario.
-*꒰ 👥 ꒱* #encuesta • #poll
-» Crea una encuesta.
-*꒰ 👥 ꒱* #delete • #del
-» Elimina mensaje de otros usuarios.
-*꒰ 👥 ꒱* #fantasmas
-» Ver lista de inactivos del grupo.
-*꒰ 👥 ꒱* #kickfantasmas
-» Elimina a los inactivos del grupo.
-*꒰ 👥 ꒱* #invocar • #tagall • #todos
-» Invoca a todos los usuarios de un grupo.
-*꒰ 👥 ꒱* #setemoji • #setemo
-» Cambia el emoji que se usa en la invitación de usuarios.
-*꒰ 👥 ꒱* #listnum • #kicknum
-» Elimina a usuario por el prefijo de país.
-
-> ･::･ﾟ☆ 𝐀𝐧𝐢𝐦𝐞 ☆･ﾟ::･> 
-Comandos de reacciones de anime, ¡tan tiernas!
-*꒰ 🌸 ꒱* #angry • #enojado + <mencion
-» Estar enojado
-*꒰ 🌸 ꒱* #bite + <mencion
-» Muerde a alguien
-*꒰ 🌸 ꒱* #bleh + <mencion
-» Sacar la lengua
-*꒰ 🌸 ꒱* #blush + <mencion
-» Sonrojarte
-*꒰ 🌸 ꒱* #bored • #aburrido + <mencion
-» Estar aburrido
-*꒰ 🌸 ꒱* #cry + <mencion
-» Llorar por algo o alguien
-*꒰ 🌸 ꒱* #cuddle + <mencion
-» Acurrucarse
-*꒰ 🌸 ꒱* #dance + <mencion
-» Sácate los pasitos prohibidos
-*꒰ 🌸 ꒱* #drunk + <mencion
-» Estar borracho
-*꒰ 🌸 ꒱* #eat • #comer + <mencion
-» Comer algo delicioso
-*꒰ 🌸 ꒱* #facepalm + <mencion
-» Darte una palmada en la cara
-*꒰ 🌸 ꒱* #happy • #feliz + <mencion
-» Salta de felicidad
-*꒰ 🌸 ꒱* #hug + <mencion
-» Dar un abrazo
-*꒰ 🌸 ꒱* #impregnate • #preg + <mencion
-» Embarazar a alguien
-*꒰ 🌸 ꒱* #kill + <mencion
-» Toma tu arma y mata a alguien
-*꒰ 🌸 ꒱* #kiss • #besar • #kiss2 + <mencion
-» Dar un beso
-*꒰ 🌸 ꒱* #laugh + <mencion
-» Reírte de algo o alguien
-*꒰ 🌸 ꒱* #lick + <mencion
-» Lamer a alguien
-*꒰ 🌸 ꒱* #love • #amor + <mencion
-» Sentirse enamorado
-*꒰ 🌸 ꒱* #pat + <mencion
-» Acaricia a alguien
-*꒰ 🌸 ꒱* #poke + <mencion
-» Picar a alguien
-*꒰ 🌸 ꒱* #pout + <mencion
-» Hacer pucheros
-*꒰ 🌸 ꒱* #punch + <mencion
-» Dar un puñetazo
-*꒰ 🌸 ꒱* #run + <mencion
-» Correr
-*꒰ 🌸 ꒱* #sad • #triste + <mencion
-» Expresar tristeza
-*꒰ 🌸 ꒱* #scared + <mencion
-» Estar asustado
-*꒰ 🌸 ꒱* #seduce + <mencion
-» Seducir a alguien
-*꒰ 🌸 ꒱* #shy • #timido + <mencion
-» Sentir timidez
-*꒰ 🌸 ꒱* #slap + <mencion
-» Dar una bofetada
-*꒰ 🌸 ꒱* #dias • #days
-» Darle los buenos días a alguien
-*꒰ 🌸 ꒱* #noches • #nights
-» Darle las buenas noches a alguien
-*꒰ 🌸 ꒱* #sleep + <mencion
-» Tumbarte a dormir
-*꒰ 🌸 ꒱* #smoke + <mencion
-» Fumar
-*꒰ 🌸 ꒱* #think + <mencion
-» Pensar en algo
-
-
-> ･:･:･ﾟ☆ 🎮 𝐉𝐮𝐞𝐠𝐨𝐬 🎮 ☆･ﾟ･ﾟ::･> 
-
-Comandos de juegos para jugar con tus amigos, ¡a divertirse!
-*꒰ 🎲 ꒱* #amistad • #amigorandom
-» Hacer amigos con un juego.
-*꒰ 🎲 ꒱* #chaqueta • #jalamela
-» Hacerte una chaqueta.
-*꒰ 🎲 ꒱* #chiste
-» La bot te cuenta un chiste.
-*꒰ 🎲 ꒱* #consejo
-» La bot te da un consejo.
-*꒰ 🎲 ꒱* #doxeo • #doxear + <mencion
-» Simular un doxeo falso.
-*꒰ 🎲 ꒱* #facto
-» La bot te lanza un facto.
-*꒰ 🎲 ꒱* #formarpareja
-» Forma una pareja.
-*꒰ 🎲 ꒱* #formarpareja5
-» Forma 5 parejas diferentes.
-*꒰ 🎲 ꒱* #frase
-» La bot te da una frase.
-*꒰ 🎲 ꒱* #huevo
-» Agárrale el huevo a alguien.
-*꒰ 🎲 ꒱* #chupalo + <mencion
-» Hacer que un usuario te la chupe.
-*꒰ 🎲 ꒱* #aplauso + <mencion
-» Aplaudirle a alguien.
-*꒰ 🎲 ꒱* #marron + <mencion
-» Burlarte del color de piel de un usuario.
-*꒰ 🎲 ꒱* #suicidar
-» Suicídate.
-*꒰ 🎲 🎲 ꒱* #iq • #iqtest + <mencion
-» Calcular el iq de alguna persona.
-*꒰ 🎲 ꒱* #meme
-» La bot te envía un meme aleatorio.
-*꒰ 🎲 ꒱* #morse
-» Convierte un texto a código morse.
-*꒰ 🎲 ꒱* #nombreninja
-» Busca un nombre ninja aleatorio.
-*꒰ 🎲 ꒱* #paja • #pajeame
-» La bot te hace una paja.
-*꒰ 🎲 ꒱* #personalidad + <mencion
-» La bot busca tu personalidad.
-*꒰ 🎲 ꒱* #piropo
-» Lanza un piropo.
-*꒰ 🎲 ꒱* #pregunta
-» Hazle una pregunta a la bot.
-*꒰ 🎲 ꒱* #ship • #pareja
-» La bot te da la probabilidad de enamorarte de una persona.
-*꒰ 🎲 ꒱* #sorteo
-» Empieza un sorteo.
-*꒰ 🎲 ꒱* #top
-» Empieza un top de personas.
-*꒰ 🎲 ꒱* #formartrio + <mencion
-» Forma un trío.
-*꒰ 🎲 ꒱* #ahorcado
-» Diviértete con la bot jugando el juego ahorcado.
-*꒰ 🎲 ꒱* #mates • #matematicas
-» Responde las preguntas de matemáticas para ganar recompensas.
-*꒰ 🎲 ꒱* #ppt
-» Juega piedra papel o tijeras con la bot.
-*꒰ 🎲 ꒱* #sopa • #buscarpalabra
-» Juega el famoso juego de sopa de letras.
-*꒰ 🎲 ꒱* #pvp • #suit + <mencion
-» Juega un pvp contra otro usuario.
-*꒰ 🎲 ꒱* #ttt
-» Crea una sala de juego.
-
-> ${dev}`.trim();
-
-  await conn.sendMessage(m.chat, {
-    text: txt,
-    contextInfo: {
-      mentionedJid: [m.sender, userId],
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: {
-        newsletterJid: channelRD.id,
-        newsletterName: channelRD.name,
-        serverMessageId: -1,
+  await conn.sendMessage(m.chat, { 
+      text: text.trim(),
+      contextInfo: {
+          mentionedJid: [m.sender],
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+              newsletterJid: channelRD.id,
+              newsletterName: channelRD.name,
+              serverMessageId: -1,
+          },
+          forwardingScore: 999,
+          externalAdReply: {
+              title: textbot,
+              body: dev,
+              thumbnailUrl: img,
+              sourceUrl: redes,
+              mediaType: 1,
+              showAdAttribution: true,
+              renderLargerThumbnail: true,
+          },
       },
-      forwardingScore: 99999999,
-      externalAdReply: {
-        title: botname,
-        body: wm,
-        thumbnailUrl: banner,
-        sourceUrl: redes,
-        mediaType: 1,
-        showAdAttribution: true,
-        renderLargerThumbnail: true,
-      },
-    },
-  }, { quoted: m });
+  }, { quoted: m })
 
-};
+  } catch (e) {
+    conn.reply(m.chat, `❌️ Lo sentimos, el menú tiene un error ${e.message}`, m, rcanal, )
+    throw e
+  }
+}
+handler.help = ['menu']
+handler.tags = ['main']
+handler.command = ['menu', 'help', 'menuall', 'allmenú', 'allmenu', 'menucompleto'] 
+handler.register = false
 
-handler.help = ['menu'];
-handler.tags = ['main'];
-handler.command = ['menutest', 'menu', 'help'];
+export default handler
 
-export default handler;
+const more = String.fromCharCode(8206)
+const readMore = more.repeat(4001)
 
 function clockString(ms) {
-  let seconds = Math.floor((ms / 1000) % 60);
-  let minutes = Math.floor((ms / (1000 * 60)) % 60);
-  let hours = Math.floor((ms / (1000 * 60 * 60)) % 24);
-  return `${hours} Horas ${minutes} Minutos ${seconds} Segundos`;
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+  return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
+
+  var ase = new Date();
+  var hour = ase.getHours();
+switch(hour){
+  case 0: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌙'; break;
+  case 1: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 💤'; break;
+  case 2: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🦉'; break;
+  case 3: hour = 'Bᴜᴇɴᴏs Dɪᴀs ✨'; break;
+  case 4: hour = 'Bᴜᴇɴᴏs Dɪᴀs 💫'; break;
+  case 5: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌅'; break;
+  case 6: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌄'; break;
+  case 7: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌅'; break;
+  case 8: hour = 'Bᴜᴇɴᴏs Dɪᴀs 💫'; break;
+  case 9: hour = 'Bᴜᴇɴᴏs Dɪᴀs ✨'; break;
+  case 10: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌞'; break;
+  case 11: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌨'; break;
+  case 12: hour = 'Bᴜᴇɴᴏs Dɪᴀs ❄'; break;
+  case 13: hour = 'Bᴜᴇɴᴏs Dɪᴀs 🌤'; break;
+  case 14: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🌇'; break;
+  case 15: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🥀'; break;
+  case 16: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🌹'; break;
+  case 17: hour = 'Bᴜᴇɴᴀs Tᴀʀᴅᴇs 🌆'; break;
+  case 18: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌙'; break;
+  case 19: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌃'; break;
+  case 20: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌌'; break;
+  case 21: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌃'; break;
+  case 22: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌙'; break;
+  case 23: hour = 'Bᴜᴇɴᴀs Nᴏᴄʜᴇs 🌃'; break;
+}
+  var greeting = hour;
