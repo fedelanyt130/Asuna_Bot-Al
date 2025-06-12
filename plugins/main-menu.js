@@ -25,25 +25,25 @@ let tags = {
 const vid = 'https://cdnmega.vercel.app/media/dwx0CKRD@MmwtDrN7W6x4EIFtt4ss50UJpk-F2fFXJBueIW1IZR8';
 
 const defaultMenu = {
-  before: `*🍭.......⋆｡˚☁︎｡⋆｡ 🍀 ⋆｡˚☁︎｡⋆........🍭*
+  before: `*🩵.......⋆｡˚☁︎｡⋆｡ 🍀 ⋆｡˚☁︎｡⋆........🩵*
 
-"「💛」 ¡Hola! *%name* %greeting, Para Ver Tu Perfil Usa *#perfil* ❒"
+"🩵ᮢ⃘ᩙ ¡Hola! *%name* %greeting, Para Ver Tu Perfil Usa *#perfil*"
 
-╔━━━━━ *⊱𝐈𝐍𝐅𝐎 - 𝐁𝐎𝐓⊰*
-✦  👤 *Cliente:* %name
-✦  🔱 *Modo:* Público
-✧  ✨ *Baileys:* Multi Device
-✦  🪐 *Tiempo Activo:* %muptime
-✧  💫 *Usuarios:* %totalreg 
-╚━━━━━━━━━━━━━━
+╭╼━━━━━ *𝐈𝐍𝐅𝐎 - 𝐁𝐎𝐓*
+├ 👤 *Cliente:* %name
+├ ⚘ *Modo:* Público
+├ 🪐 *Baileys:* Multi Device
+├ ⏱ *Tiempo Activo:* %muptime
+├ 💫 *Usuarios:* %totalreg 
+╚━━━━━━━━━━━━
 %readmore
 *✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧*\n\n> Para Ser Un Sub Bots Usa #code para codigo de 8 dígitos y #qr para codigo qr.
 
-\t*(✰◠‿◠) COMANDOS ASUNA*   
+\t*(🩵◠‿◠) COMANDOS ASUNA*   
 `.trimStart(),
-  header: '͜ ۬︵࣪᷼⏜݊᷼⏜🩵⏜࣪᷼⏜࣪᷼︵۬ ͜\n┊➳ %category \n͜ ۬︵࣪᷼⏜݊᷼⏜🩵⏜࣪᷼⏜࣪᷼︵۬ ͜',
+  header: '͜ ۬︵࣪᷼⏜݊᷼⏜🩵ᮢ⃘ᩙ⏜࣪᷼⏜࣪᷼︵۬ ͜\n %category \n͜ ۬︵࣪᷼⏜݊᷼⏜🩵ᮢ⃘ᩙ⏜࣪᷼⏜࣪᷼︵۬ ͜',
   body: '⏤͟͟͞͞🩵ᮢ⃘ᩙ * %cmd',
-  footer: '*┗━*\n',
+  footer: '*╚╼╼*\n',
   after: `> ${dev}`,
 }
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
@@ -136,7 +136,7 @@ npmdesc: _package.description,
 version: _package.version,
 exp: exp - min,
 maxexp: xp,
-botofc: (conn.user.jid == global.conn.user.jid ? '💛 𝙴𝚂𝚃𝙴 𝙴𝚂 𝙴𝙻 𝙱𝙾𝚃 𝙾𝙵𝙲' : `💛 𝚂𝚄𝙱-𝙱𝙾𝚃 𝙳𝙴: Wa.me/${global.conn.user.jid.split`@`[0]}`), 
+botofc: (conn.user.jid == global.conn.user.jid ? '🩵 𝙴𝚂𝚃𝙴 𝙴𝚂 𝙴𝙻 𝙱𝙾𝚃 𝙾𝙵𝙲' : `🩵 𝚂𝚄𝙱-𝙱𝙾𝚃 𝙳𝙴: Wa.me/${global.conn.user.jid.split`@`[0]}`), 
 totalexp: exp,
 xp4levelup: max - exp,
 github: _package.homepage ? _package.homepage.url || _package.homepage : '[unknown github url]',
