@@ -57,8 +57,8 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     regbot += `*⸽ ͜ ֟፝͝ ⃨͜ ⸽ ͜ ֟፝͝ ⃨͜ ⸽᮫᷼  ͜ ໍ ᷼ᮬ࣪  ׅ 🩵ຼິ͙͙〫 ׅ  ࣪᷼  ͜  ᷼ᮬ᮫ ໍ⸽ ͜ ֟፝͝ ⃨͜ ⸽ ͜ ֟፝͝ ⃨͜ ⸽*\n> `
     regbot += `🍫 Usᥲ *#perfil* ⍴ᥲrᥲ ᥎ᥱr 𝗍ᥙ ⍴ᥱr𝖿іᥣ.`
 
-let channelID = '120363402097425674@newsletter';
-        await conn.sendMessage(channelID, {
+let channelID = '120363420017244077@newsletter';
+    await conn.sendMessage(channelID, {
   await conn.sendMessage(m.chat, {
         text: regbot,
         contextInfo: {
