@@ -61,7 +61,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
         text: regbot,
         contextInfo: {
             externalAdReply: {
-                title: '『💙 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 💙』',
+                title: '『💙 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢•𝗔 💙』',
                 thumbnailUrl: 'https://files.catbox.moe/g8izji.jpg',
                 mediaType: 1,
                 renderLargerThumbnail: true
@@ -77,12 +77,12 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
                 showAdAttribution: true,                      
                 containsAutoReply: true,     
                 renderLargerThumbnail": true,
-                title: '╚✅𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥✅╝⊰',  
+                title: '╚💙 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢•𝗔 💙╝',  
                 body: dev,  
                 containsAutoReply: true,
                 showAdAttribution: true,
                 mediaType: 1, 
-                thumbnailUrl: 'https://cdnmega.vercel.app/media/J1ZzFDYC@wNBS8rKd-Ynw264guxMkO8Hx2CuTdAuyfE0ijGbS3Dw' }}}, {quoted: m})
+                thumbnailUrl: 'https://files.catbox.moe/g8izji.jpg' }}}, {quoted: m})
 */
 
 let chtxt = `👤 *𝚄𝚜𝚎𝚛* » ${m.pushName || 'Anónimo'}
