@@ -42,13 +42,13 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     }
     
     let sn = createHash('md5').update(m.sender).digest('hex')
-    let regbot = `╭─ׅ─ׅ┈─๋︩︪─v─ׅ─ׅ┈─๋︩︪╮
+    let regbot = `╭─ׅ─ׅ┈─๋︩︪──ׅ─ׅ┈─๋︩︪╮
 ╭╼✦ 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢 ✦ 
-┃֪࣪ ╰─ׅ─ׅ┈─๋︩︪─v─ׅ─ׅ┈─๋︩︪╯\n`
-    regbot += `•✩.･*:｡≻──── ⋆♡⋆ ────.•*:｡✩•\n`
+┃֪࣪╰─ׅ─ׅ┈─๋︩︪──ׅ─ׅ┈─๋︩︪╯\n`
+    regbot += `•✩.･*:｡≻─── ⋆♡⋆ ───.•*:｡✩•\n`
     regbot += `*🩵ᮢ⃘ᩙ𑰴 𝐍𝐨𝐦𝐛𝐫𝐞:* ${name}\n`
     regbot += `*🩵ᮢ⃘ᩙ𑰴 𝐄𝐝𝐚𝐝:* ${age} años\n`
-    regbot += `•✩.･*:｡≻──── ⋆♡⋆ ────.•*:｡✩•\n`
+    regbot += `•✩.･*:｡≻───⋆♡⋆ ───.•*:｡✩•\n`
     regbot += `*「💙」𝐑𝐞𝐜𝐨𝐦𝐩𝐞𝐧𝐬𝐚𝐬:*\n> `
     regbot += `• 15 Estrellas 🌟\n> `
     regbot += `• 5 CrowCoins 🪙\n> `
@@ -61,8 +61,8 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
         text: regbot,
         contextInfo: {
             externalAdReply: {
-                title: '⊱『✅𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥✅』⊰',
-                thumbnailUrl: 'https://cdnmega.vercel.app/media/h44y0CQD@xRux51A-53nzEWpQQYioHF2F3Pq04k9oPdDpcdNz5mw',
+                title: '『💙 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 💙』',
+                thumbnailUrl: 'https://files.catbox.moe/g8izji.jpg',
                 mediaType: 1,
                 renderLargerThumbnail: true
             }
