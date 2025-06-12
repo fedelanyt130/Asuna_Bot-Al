@@ -45,15 +45,16 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
     let regbot = `╭─ׅ─ׅ┈─๋︩︪──ׅ─ׅ┈─๋︩︪╮
 ╭╼✦ 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢 ✦ 
 ┃֪࣪╰─ׅ─ׅ┈─๋︩︪──ׅ─ׅ┈─๋︩︪╯\n`
-    regbot += `•✩.･*:｡≻─── ⋆♡⋆ ───.•*:｡✩•\n`
+    regbot += `•✩.･*:｡≻──⋆♡⋆───.•*:｡✩•\n`
     regbot += `*🩵ᮢ⃘ᩙ𑰴 𝐍𝐨𝐦𝐛𝐫𝐞:* ${name}\n`
     regbot += `*🩵ᮢ⃘ᩙ𑰴 𝐄𝐝𝐚𝐝:* ${age} años\n`
-    regbot += `•✩.･*:｡≻───⋆♡⋆ ───.•*:｡✩•\n`
+    regbot += `•✩.･*:｡≻──⋆♡⋆───.•*:｡✩•\n`
     regbot += `*「💙」𝐑𝐞𝐜𝐨𝐦𝐩𝐞𝐧𝐬𝐚𝐬:*\n> `
     regbot += `• 15 Estrellas 🌟\n> `
-    regbot += `• 5 CrowCoins 🪙\n> `
+    regbot += `• 5 AsunaCoins 🪙\n> `
     regbot += `• 245 Experiencia 💸\n> `
     regbot += `• 12 Tokens 💰\n`
+    https://whatsapp.com/channel/0029VbApe6jG8l5Nv43dsC2N
     regbot += `*⸽ ͜ ֟፝͝ ⃨͜ ⸽ ͜ ֟፝͝ ⃨͜ ⸽᮫᷼  ͜ ໍ ᷼ᮬ࣪  ׅ 🩵ຼິ͙͙〫 ׅ  ࣪᷼  ͜  ᷼ᮬ᮫ ໍ⸽ ͜ ֟፝͝ ⃨͜ ⸽ ͜ ֟፝͝ ⃨͜ ⸽*\n> `
     regbot += `🍫 Usᥲ *#perfil* ⍴ᥲrᥲ ᥎ᥱr 𝗍ᥙ ⍴ᥱr𝖿іᥣ.`
 
@@ -84,7 +85,6 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
                 mediaType: 1, 
                 thumbnailUrl: 'https://files.catbox.moe/g8izji.jpg' }}}, {quoted: m})
 */
-let imageUrl = 'https://files.catbox.moe/g8izji.jpg';
 let chtxt = `👤 *𝚄𝚜𝚎𝚛* » ${m.pushName || 'Anónimo'}
 🗂 *𝚅𝚎𝚛𝚒𝚏𝚒𝚌𝚊𝚌𝚒𝚘́𝚗* » ${user.name}
 🍨 *𝙴𝚍𝚊𝚍* » ${user.age} años
