@@ -93,7 +93,9 @@ export async function before(m, { conn, participants, groupMetadata }) {
       m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE
     ) {
       let despedida = `
-*╭──〔 *Despedida* 〕──⬣*
+╭─ׅ─ׅ┈─๋︩︪─v─ׅ─ׅ┈─๋︩︪╮
+╭╼ *Hasta luego gay*
+┃֪࣪ ╰─ׅ─ׅ┈─๋︩︪─v─ׅ─ׅ┈─๋︩︪╯
 *├ Usuario:* ${taguser}
 *├ País:* ${pais}
 *├ Grupo:* *${groupMetadata.subject}*
