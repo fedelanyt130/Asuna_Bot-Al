@@ -77,7 +77,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 *├ Grupo:* *${groupMetadata.subject}*
 *├ Miembros:* *${totalMembers + 1}*
 *├ Fecha:* *${date}*
- *╚╼╼╼╼╼╼╼╼╼╼╼╝*
+*╼╼╼╼╼╼╼╼╼╼╼╼*
 *${fraseRandomBienvenida}*
       `.trim();
 
@@ -101,7 +101,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
 *├ Grupo:* *${groupMetadata.subject}*
 *├ Miembros:* *${totalMembers - 1}*
 *├ Fecha:* *${date}*
- *╚╼╼╼╼╼╼╼╼╼╼╼╝*
+*╼╼╼╼╼╼╼╼╼╼╼╼╼*
 *${fraseRandomDespedida}*
       `.trim();
 
