@@ -84,7 +84,7 @@ let handler = async function (m, { conn, text, args, usedPrefix, command }) {
                 mediaType: 1, 
                 thumbnailUrl: 'https://files.catbox.moe/g8izji.jpg' }}}, {quoted: m})
 */
-
+let imageUrl = 'https://files.catbox.moe/g8izji.jpg';
 let chtxt = `👤 *𝚄𝚜𝚎𝚛* » ${m.pushName || 'Anónimo'}
 🗂 *𝚅𝚎𝚛𝚒𝚏𝚒𝚌𝚊𝚌𝚒𝚘́𝚗* » ${user.name}
 🍨 *𝙴𝚍𝚊𝚍* » ${user.age} años
