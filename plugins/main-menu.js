@@ -12,7 +12,6 @@ let tags = {
   'rg': '「REGISTRO」🩵',
   'sticker': '「STICKERS」🩵',
   'emox': '「ANIMES」🩵',
-  'database': '「DATABASE」🩵',
   'grupo': '「GRUPOS」🩵',
   'nable': '「ON / OFF」🩵', 
   'descargas': '「DESCARGAS」🩵',
