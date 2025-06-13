@@ -1,6 +1,6 @@
 <h1 align="center">ᥲsᥙᥒᥲ_ᑲ᥆𝗍-ᥲᥣ</h1>
 
- <img src= "https://files.catbox.moe/iigsua.jpg">
+ <img src= "https://files.catbox.moe/70lyk8.jpg">
     </p>
 
 ----
