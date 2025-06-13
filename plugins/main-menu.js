@@ -4,21 +4,21 @@ import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 
 let tags = {
-  'main': '🩵ᮢ⃘ᩙ「INFO」',
-  'buscador': '🩵ᮢ⃘ᩙ「BUSQUEDAS」',
-  'fun': '🩵ᮢ⃘ᩙ「JUEGOS」',
-  'serbot': '🩵ᮢ⃘ᩙ「SUB BOTS」',
-  'rpg': '🩵ᮢ⃘ᩙ「RPG」',
-  'rg': '🩵ᮢ⃘ᩙ「REGISTRO」',
+  'main': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「INFO」',
+  'buscador': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「BUSQUEDAS」',
+  'fun': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「JUEGOS」',
+  'serbot': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「SUB BOTS」',
+  'rpg': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「RPG」',
+  'rg': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「REGISTRO」',
   'sticker': '🩵ᮢ⃘ᩙ「STICKERS」',
-  'emox': '🩵ᮢ⃘ᩙ「ANIMES」',
-  'grupo': '🩵ᮢ⃘ᩙ「GRUPOS」',
-  'nable': '🩵ᮢ⃘ᩙ「ON / OFF」', 
-  'descargas': '🩵ᮢ⃘ᩙ「DESCARGAS」',
-  'tools': '🩵ᮢ⃘ᩙ「HERRAMIENTAS」',
-  'info': '🩵ᮢ⃘ᩙ「INFORMACIÓN」',
-  'owner': '🩵ᮢ⃘ᩙ「CREADOR」',
-  'logos': '🩵ᮢ⃘ᩙ「EDICION LOGOS」', 
+  'emox': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「ANIMES」',
+  'grupo': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「GRUPOS」',
+  'nable': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「ON / OFF」', 
+  'descargas': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「DESCARGAS」',
+  'tools': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「HERRAMIENTAS」',
+  'info': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「INFORMACIÓN」',
+  'owner': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「CREADOR」',
+  'logos': '⏤͟͟͞͞🩵ᮢ⃘ᩙ「EDICION LOGOS」', 
 }
 
 const vid = 'https://cdnmega.vercel.app/media/dwx0CKRD@MmwtDrN7W6x4EIFtt4ss50UJpk-F2fFXJBueIW1IZR8';
