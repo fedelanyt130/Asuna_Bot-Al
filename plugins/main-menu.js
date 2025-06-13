@@ -28,7 +28,7 @@ const defaultMenu = {
 
 "🩵ᮢ⃘ᩙ ¡Hola! *%name* %greeting, Para Ver Tu Perfil Usa *#perfil*"
 
-╭╼━━━━━ *𝐈𝐍𝐅𝐎 - 𝐁𝐎𝐓*
+╭╼━━━━━❍
 ├ 👤 *Cliente:* %name
 ├ ⚘ *Modo:* Público
 ├ 🪐 *Baileys:* Multi Device
